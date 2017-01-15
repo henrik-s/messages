@@ -87,3 +87,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Mac OSX file
+.DS_Store
+
+# SQLite
+app.db
