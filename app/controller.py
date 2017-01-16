@@ -88,7 +88,7 @@ def delete_messages(username):
     try:
         int_ids = map(int, ids)
     except:
-        return '', 400
+        return json.dumps([]), 400
 
     user = util.get_user_by_username(username)
     deleted_msgs = list()
@@ -113,7 +113,7 @@ def get_messages_for_interval(username):
         stop = abs(int(request.args.get('stop')))
 
     except ValueError:
-        return '', 400
+        return json.dumps([]), 400
 
     rows = stop - start + 1
 

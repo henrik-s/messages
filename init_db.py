@@ -1,11 +1,25 @@
+import os
+
 from app import db, models
 
-db.create_all()
 
-user_1 = models.User(name='Henrik')
-user_2 = models.User(name='Mikaela')
+def drop_and_create():
+    try:
+        os.remove('app.db')
+    except OSError:
+        pass
 
-db.session.add(user_1)
-db.session.add(user_2)
+    db.create_all()
 
-db.session.commit()
+    user_1 = models.User(name='henrik')
+    user_2 = models.User(name='mikaela')
+
+    db.session.add(user_1)
+    db.session.add(user_2)
+
+    db.session.commit()
+
+
+if __name__ == '__main__':
+    drop_and_create()
+    print 'New database created'
