@@ -1,6 +1,5 @@
 from app import db, models
 from models import User
-from flask import request
 
 
 def user_exists(username):

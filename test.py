@@ -89,7 +89,7 @@ class MyTest(unittest.TestCase):
         url = SERVER_URL + '/user/'+USER_1+'/messages/unread'
         self.send_request(url)
 
-        # Send a second request
+        # Send a second purge request
         request_head, request_body = self.send_request(url)
         json_body = json.loads(request_body)
 
@@ -203,7 +203,7 @@ class MyTest(unittest.TestCase):
         self.send_request(url, body=data_3, method='POST')
         self.send_request(url, body=data_4, method='POST')
 
-        # Find out the id for these two messages
+        # Find out the id for the last two messages
         url = SERVER_URL + '/user/'+USER_1+'/messages?start=0&stop=1'
         request_head, request_body = self.send_request(url)
         json_body = json.loads(request_body)

@@ -23,7 +23,7 @@ make start
 python run.py
 ```
 
-If everything goes well, the base address to the service is `http://127.0.0.1:5000`
+If everything goes well the service should be up and running. The base address to it is `http://127.0.0.1:5000`.
 
 After `init_db.py` has been run, two users have been added (`henrik, mikaela`). For instance, you should now be able to read all (none initially) unread messages for `henrik` at:
 http://127.0.0.1:5000/user/henrik/messages/unread
