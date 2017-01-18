@@ -36,12 +36,12 @@ def send_message(username):
     required_data = ['sender', 'message']
 
     if json_data is None:
-        return json.dumps(required_data), 400
+        return jsonify(required_data), 400
 
     missing_params = [x for x in required_data if x not in json_data]
     print json_data
     if missing_params:
-        return json.dumps(missing_params), 400
+        return jsonify(missing_params), 400
 
     sender_name = json_data['sender']
     if sender_name is None or not util.user_exists(sender_name):
@@ -83,12 +83,12 @@ def get_unread_messages(username):
 def delete_messages(username):
     ids = request.args.getlist('id')
     if not ids:
-        return json.dumps(['id']), 400
+        return jsonify(['id']), 400
 
     try:
         int_ids = map(int, ids)
     except:
-        return json.dumps([]), 400
+        return jsonify([]), 400
 
     user = util.get_user_by_username(username)
     deleted_msgs = list()
@@ -106,14 +106,14 @@ def delete_messages(username):
 def get_messages_for_interval(username):
     missing_params = [x for x in ['start', 'stop'] if x not in request.args]
     if missing_params:
-        return json.dumps(missing_params), 400
+        return jsonify(missing_params), 400
 
     try:
         start = abs(int(request.args.get('start')))
         stop = abs(int(request.args.get('stop')))
 
     except ValueError:
-        return json.dumps([]), 400
+        return jsonify([]), 400
 
     rows = stop - start + 1
 
